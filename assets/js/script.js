@@ -20,7 +20,7 @@ function timer() {
         timeRemaining.textContent = "Your time has ran out"; 
         finish.textContent = "Your time has ran out";
         finishedQuiz();
-
+    //adding an else if statement if the user finishes in time
     } else  if(questCount >= questionLists.length +1) {
         clearInterval(timerInterval);
         finishedQuiz();
@@ -28,7 +28,15 @@ function timer() {
 }, 1000);
     
     }
-
+  //  WHEN a timer starts and I am presented with a question
+  var questionLists = [
+    {
+        question: "Q1 : What's the capital city of Indonesia",
+        choices: ["a. Bali", "b. Nusa Penida", "c. Jakarta", "d. Java"],
+        answer: "c"
+    },
+]
+  // finished Quiz function
 function finishedQuiz() {
 
 }
