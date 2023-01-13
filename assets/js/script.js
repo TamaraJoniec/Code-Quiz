@@ -9,3 +9,11 @@ let question = 0;
 let Score = 0;
 let questCount = 1;
 
+function countdown() {       
+    let timerInterval = setInterval(function () {
+      seconds --;
+      timeRemaining.textContent = "Time left: " + seconds + " s";
+    
+    
+    
+    }
