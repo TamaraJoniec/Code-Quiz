@@ -9,11 +9,17 @@ let question = 0;
 let Score = 0;
 let questCount = 1;
 
-function countdown() {       
+function timer() {       
     let timerInterval = setInterval(function () {
       seconds --;
       timeRemaining.textContent = "Time left: " + seconds + " s";
     
-    
+      if (seconds <= 0){
+        clearInterval(timerInterval);
+        timeRemaining.textContent = "Your time has ran out"; 
+        finish.textContent = "Your time has ran out";
+        finishedQuiz();
+
     
     }
+}
