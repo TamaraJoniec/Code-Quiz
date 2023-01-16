@@ -8,7 +8,7 @@ let questionTitle = document.querySelector("#question_title");
 let startScreen = document.querySelector("#start_screen")
 
 let seconds = 60;
-let question = 0;
+let questionNmb = 0;
 let score = 0;
 let questCount = 1;
 
@@ -17,26 +17,11 @@ let questCount = 1;
 function startPage() {
     startScreen.style.display = "none";
     questionTitle.style.display = "block";
-    questionNumber = 0
+    questionNmb = 0
     countdown();
-    displayQuestion(questionNumber);
+    displayQuestion(questionNmb);
 }
 
-//Display Q&A
-let ask = document.querySelector("#ask");
-let optionButton1 = document.querySelector("#optionButton1");
-let optionButton2 = document.querySelector("#optionButton2");
-let optionButton3 = document.querySelector("#optionButton3");
-let optionButton4 = document.querySelector("#optionButton4");
-
-function displayQuestion(n) {
-    ask.textContent = questionLists[n].question;
-    optionButton1.textContent = questionLists[n].choices[0];
-    optionButton2.textContent = questionLists[n].choices[1];
-    optionButton3.textContent = questionLists[n].choices[2];
-    optionButton4.textContent = questionLists[n].choices[3];
-    questionNumber = n;
-}
 function timer() {
     let timerInterval = setInterval(function () {
         seconds--;
@@ -55,8 +40,24 @@ function timer() {
         }
     }, 1000);
 }
-//  WHEN a timer starts and I am presented with a question
-// created variables for option buttons, linked back to html file.
+// WHEN a timer starts and I am presented with a question
+// Created variables for option buttons, linked back to html file.
+
+// Display Q&A
+let ask = document.querySelector("#ask");
+let optionButton1 = document.querySelector("#optionButton1");
+let optionButton2 = document.querySelector("#optionButton2");
+let optionButton3 = document.querySelector("#optionButton3");
+let optionButton4 = document.querySelector("#optionButton4");
+
+function displayQuestion(n) {
+    ask.textContent = questionLists[n].question;
+    optionButton1.textContent = questionLists[n].choices[0];
+    optionButton2.textContent = questionLists[n].choices[1];
+    optionButton3.textContent = questionLists[n].choices[2];
+    optionButton4.textContent = questionLists[n].choices[3];
+    questionNmb = n;
+}
 
 let questionLists = [
     {
@@ -83,7 +84,7 @@ let questionLists = [
 // WHEN I answer a question, identify right from wrong answers
 
 let check = document.querySelector("#check")
-function checkAnswer(event) {
+function checkResponse (event) {
     event.preventDefault();
     //display result
     check.style.display = "block";
@@ -91,10 +92,12 @@ function checkAnswer(event) {
         check.style.display = 'none';
     }, 1000);
      // check 
-     if (questionLists[questionNumber].answer == event.target.value) {
+     if (questionLists[questionNmb].answer == event.target.value) {
         check.textContent = "Correct!"; 
         score = score + 1;
-
+    } else {
+        seconds = seconds - 10;
+        check.textContent = "Nope! The answer is:  " + questionLists[questionNmb].answer + " .";
     }
 }
 
