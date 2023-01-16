@@ -30,11 +30,11 @@ let optionButton3 = document.querySelector("#optionButton3");
 let optionButton4 = document.querySelector("#optionButton4");
 
 function displayQuestion(n) {
-    ask.textContent = questionSource[n].question;
-    optionButton1.textContent = questionSource[n].choices[0];
-    optionButton2.textContent = questionSource[n].choices[1];
-    optionButton3.textContent = questionSource[n].choices[2];
-    optionButton4.textContent = questionSource[n].choices[3];
+    ask.textContent = questionLists[n].question;
+    optionButton1.textContent = questionLists[n].choices[0];
+    optionButton2.textContent = questionLists[n].choices[1];
+    optionButton3.textContent = questionLists[n].choices[2];
+    optionButton4.textContent = questionLists[n].choices[3];
     questionNumber = n;
 }
 function timer() {
@@ -82,14 +82,20 @@ let questionLists = [
 ]
 // WHEN I answer a question, identify right from wrong answers
 
-var check = document.querySelector("#check")
+let check = document.querySelector("#check")
 function checkAnswer(event) {
     event.preventDefault();
-    //show result
+    //display result
     check.style.display = "block";
     setTimeout(function () {
-        checkLine.style.display = 'none';
+        check.style.display = 'none';
     }, 1000);
+     // check 
+     if (questionLists[questionNumber].answer == event.target.value) {
+        check.textContent = "Correct!"; 
+        score = score + 1;
+
+    }
 }
 
 // finished Quiz function
