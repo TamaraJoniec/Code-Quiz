@@ -4,12 +4,23 @@
 let startButton = document.querySelector("#start_button");
 let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
+let questionTitle = document.querySelector("#question_title");
+let startScreen = document.querySelector("#start_screen")
 let seconds = 60;
 let question = 0;
 let score = 0;
 let questCount = 1;
+ 
 
-
+     //Click the button to start the quiz
+     function start () {
+        startScreen.style.display = "none";
+        questionTitle.style.display = "block";
+        questionNumber = 0
+        countdown();
+       
+      
+}
 function timer() {
     let timerInterval = setInterval(function () {
         seconds--;
