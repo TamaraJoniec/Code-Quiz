@@ -117,13 +117,19 @@ function finishedQuiz() {
     questionTitle.style.display = "none";
     submitPage.style.display = "block";
     console.log(submitPage);
-    // show final score
+    // final score
     finalScore.textContent = "You got :" + score ;
-    // clearInterval(timerInterval);  
     timeRemaining.style.display = "none"; 
 }
 
-    // get current score and initials from local storage
+    // creating a function to display scores and initals
     function whatsMyScore () {
-       
+        let presentList =localStorage.getItem("ScoreList");
+        if (presentList !== null ){
+            newList = JSON.parse(presentList);
+            return newList;
+        } else {
+            newList = [];
+        }
+        return newList;
     };
