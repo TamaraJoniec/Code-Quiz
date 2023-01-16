@@ -6,20 +6,36 @@ let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
 let questionTitle = document.querySelector("#question_title");
 let startScreen = document.querySelector("#start_screen")
+
 let seconds = 60;
 let question = 0;
 let score = 0;
 let questCount = 1;
- 
 
-     //Click the button to start the quiz
-     function start () {
-        startScreen.style.display = "none";
-        questionTitle.style.display = "block";
-        questionNumber = 0
-        countdown();
-       
-      
+
+//Click the button to start
+function startPage() {
+    startScreen.style.display = "none";
+    questionTitle.style.display = "block";
+    questionNumber = 0
+    countdown();
+    displayQuestion(questionNumber);
+}
+
+//Display Q&A
+let ask = document.querySelector("#ask");
+let optionButton1 = document.querySelector("#optionButton1");
+let optionButton2 = document.querySelector("#optionButton2");
+let optionButton3 = document.querySelector("#optionButton3");
+let optionButton4 = document.querySelector("#optionButton4");
+
+function displayQuestion(n) {
+    ask.textContent = questionSource[n].question;
+    optionButton1.textContent = questionSource[n].choices[0];
+    optionButton2.textContent = questionSource[n].choices[1];
+    optionButton3.textContent = questionSource[n].choices[2];
+    optionButton4.textContent = questionSource[n].choices[3];
+    questionNumber = n;
 }
 function timer() {
     let timerInterval = setInterval(function () {
@@ -41,11 +57,7 @@ function timer() {
 }
 //  WHEN a timer starts and I am presented with a question
 // created variables for option buttons, linked back to html file.
-let optionButton1 = document.querySelector("#optionButton1");
-let optionButton2 = document.querySelector("#optionButton2");
-let optionButton3 = document.querySelector("#optionButton3");
-let optionButton4 = document.querySelector("#optionButton4");
-    
+
 let questionLists = [
     {
         question: "Q1 : What's the capital city of Indonesia",
@@ -69,16 +81,16 @@ let questionLists = [
     },
 ]
 // WHEN I answer a question, identify right from wrong answers
-    
+
 var check = document.querySelector("#check")
 function checkAnswer(event) {
-        event.preventDefault();
-        //show result
-        check.style.display = "block";
-        setTimeout(function () {
-            checkLine.style.display = 'none';
-        }, 1000);
-    }
+    event.preventDefault();
+    //show result
+    check.style.display = "block";
+    setTimeout(function () {
+        checkLine.style.display = 'none';
+    }, 1000);
+}
 
 // finished Quiz function
 function finishedQuiz() {
