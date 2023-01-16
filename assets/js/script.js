@@ -122,3 +122,8 @@ function finishedQuiz() {
     // clearInterval(timerInterval);  
     timeRemaining.style.display = "none"; 
 }
+
+    // get current score and initials from local storage
+    function whatsMyScore () {
+       
+    };
