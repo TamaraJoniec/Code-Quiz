@@ -4,7 +4,7 @@
 let startButton = document.querySelector("#start_button");
 let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
-let questionTitle = document.querySelector("#question_title");
+let questionTitlePage = document.querySelector("#question_title");
 let startScreen = document.querySelector("#start_screen")
 
 let seconds = 60;
@@ -13,14 +13,16 @@ let score = 0;
 let questCount = 1;
 
 
-//Click the button to start
-function startPage() {
+// Click the button to start
+
+function startTheQuiz() {
     startScreen.style.display = "none";
     questionTitle.style.display = "block";
     questionNmb = 0
     countdown();
     displayQuestion(questionNmb);
 }
+
 
 function timer() {
     let timerInterval = setInterval(function () {
@@ -44,14 +46,14 @@ function timer() {
 // Created variables for option buttons, linked back to html file.
 
 // Display Q&A
-let ask = document.querySelector("#ask");
+let optionButtons = document.querySelector(".choices");
 let optionButton1 = document.querySelector("#optionButton1");
 let optionButton2 = document.querySelector("#optionButton2");
 let optionButton3 = document.querySelector("#optionButton3");
 let optionButton4 = document.querySelector("#optionButton4");
 
 function displayQuestion(n) {
-    ask.textContent = questionLists[n].question;
+    optionButtons.textContent = questionLists[n].question;
     optionButton1.textContent = questionLists[n].choices[0];
     optionButton2.textContent = questionLists[n].choices[1];
     optionButton3.textContent = questionLists[n].choices[2];
@@ -114,7 +116,7 @@ let scoreHistory =document.querySelector("#score_history");
 let scoreCheck =document.querySelector("#score_check");
 
 function finishedQuiz() {
-    questionTitle.style.display = "none";
+    questionTitlePage.style.display = "none";
     submitPage.style.display = "block";
     console.log(submitPage);
     // final score
@@ -133,3 +135,13 @@ function finishedQuiz() {
         }
         return newList;
     };
+
+ // Event listeners
+ // startButton to start the quiz
+ startButton.addEventListener("click", startTheQuiz);
+    
+  //options buttons, next question button
+  optionButtons.forEach(function(click){
+    
+    click.addEventListener("click", check);
+});
