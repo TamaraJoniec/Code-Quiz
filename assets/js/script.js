@@ -98,10 +98,27 @@ function checkResponse (event) {
     } else {
         seconds = seconds - 10;
         check.textContent = "Nope! The answer is:  " + questionLists[questionNmb].answer + " .";
-    }
+    }   //THEN I am presented with another question
+    if (questionNmb < questionLists.length -1 ) {
+        displayQuestion(questionNmb +1);
+    } else {
+        finishedQuiz();
+}
 }
 
 // finished Quiz function
-function finishedQuiz() {
+let submitPage = document.querySelector("#submit_page");
+let finalScore = document.querySelector("#final_score");
+let highScores =document.querySelector("#highscores");
+let scoreHistory =document.querySelector("#score_history");
+let scoreCheck =document.querySelector("#score_check");
 
+function finishedQuiz() {
+    questionTitle.style.display = "none";
+    submitPage.style.display = "block";
+    console.log(submitPage);
+    // show final score
+    finalScore.textContent = "You got :" + score ;
+    // clearInterval(timerInterval);  
+    timeRemaining.style.display = "none"; 
 }
