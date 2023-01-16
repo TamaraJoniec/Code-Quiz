@@ -9,6 +9,7 @@ let question = 0;
 let score = 0;
 let questCount = 1;
 
+
 function timer() {
     let timerInterval = setInterval(function () {
         seconds--;
@@ -28,6 +29,7 @@ function timer() {
     }, 1000);
 }
 //  WHEN a timer starts and I am presented with a question
+// created variables for option buttons, linked back to html file.
 let optionButton1 = document.querySelector("#optionButton1");
 let optionButton2 = document.querySelector("#optionButton2");
 let optionButton3 = document.querySelector("#optionButton3");
