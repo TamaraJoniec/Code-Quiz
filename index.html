@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Tangerine">
+<style>
+body {
+font-family: 'Tangerine', serif;
+font-size: 48px;
+}
+</style>
   <title>Coding Quiz</title>
 </head>
 
@@ -38,7 +46,6 @@
     <!--  variables for question option buttons, linked back to js file. -->
     <section id="questions" class="hide">
       <h2 id="question-title"></h2>
-      <div id="choices" class="choices">
         <ul>
           <li><button class="choices" id="option_button1" value="a">A</button></li>
           <li><button class="choices" id="option_button2" value="b">B</button></li>
@@ -63,19 +70,13 @@
       </p>
     </section>
 
-    <!--high scores area -->
-    <section class="highscoresDisplay" id="highscores">
-      <div>
-        <h2>High Scores</h2>
-        <div id="score_history">
-          <p>Scores history</p>
-        </div><br><br>
+    <!-- Buttons -->
         <div>
           <button id="back_button">back</button>
           <button id="clear_button">Clear</button>
         </div>
       </div>
-    </section>
+  
 
     <div id="feedback" class="feedback hide"></div>
     </div>

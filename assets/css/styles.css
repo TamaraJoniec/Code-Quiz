@@ -1,8 +1,13 @@
 body {
   font-family: Arial;
   font-size: 120%;
+  color: white;
+  background-image: url("/assets/images/background.jpeg"); 
 }
-
+backgroud-image {
+  background-repeat: no-repeat;
+  background-size:cover ;
+}
 a {
   color: #563d7c;
   text-decoration: none;
@@ -62,7 +67,9 @@ li:nth-child(odd) {
   display: none;
 }
 
-.start {
+.start,
+#back_button,
+#clear_button {
   text-align: center;
 }
 
