@@ -5,24 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
   <title>Coding Quiz</title>
 </head>
 
 <body>
   <header>
     <div class="header">
-        <!--High scores button-->
-        <div>
-            <button class="button" id="score_check">View Highscores</button>
-        </div>
-        <!--Timer button-->
-        <div>
-            <p id="timer"> Time Remaining: 60 seconds</p>
-        </div>
+      <!--High scores button-->
+      <div>
+        <button class="button" id="score_check">View Highscores</button>
+      </div>
+      <!--Timer button-->
+      <div>
+        <p id="timer"> Time Remaining: 60 seconds</p>
+      </div>
     </div>
-</header>
+  </header>
 
+  <main>
     <!--introduction -->
     <section id="start-screen" class="start">
       <h1>Coding Quiz Challenge</h1>
@@ -70,17 +71,17 @@
           <p>Scores history</p>
         </div><br><br>
         <div>
-          <button class="button" id="back_btn">Go back</button>
-          <button class="button" id="clear_btn">Clear Highscores</button>
+          <button id="back_button">back</button>
+          <button id="clear_button">Clear</button>
         </div>
       </div>
     </section>
 
     <div id="feedback" class="feedback hide"></div>
     </div>
-    <script type="text/javascript" src="./assets/js/script.js"></script>
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
+
+  </main>
+  <script type="text/javascript" src="./assets/js/script.js"></script>
 </body>
 
 </html>

@@ -1,27 +1,19 @@
 
 // WHEN I click the start button THEN a timer starts 
-console.log("is this even working")
-let startButton = document.querySelector("#start");
-let finish = document.querySelector("#finish");
-let timeRemaining = document.getElementById("timer");
-let startScreen = document.querySelector("#start-screen")
-let questionDisplayEl = document.querySelector("#questions")
 
 let seconds = 60;
 let questionNmb = 0;
 let score = 0;
 let questCount = 1;
 
-
 // Click the button to start
 
 function startTheQuiz() {
     startScreen.style.display = "none";
-    questionDisplayEl.style.display = "block";
+    questionDisplay.style.display = "block";
     questionNmb = 0
     timer();
     displayQuestion(questionNmb);
-   
 }
 
 function timer() {
@@ -55,7 +47,7 @@ let optionButton3 = document.querySelector("#optionButton3");
 let optionButton4 = document.querySelector("#optionButton4");
 
 function displayQuestion(n) {
-    questionDisplayEl.textContent = questionLists[n].question;
+    questionDisplay.textContent = questionLists[n].question;
     optionButton1.textContent = questionLists[n].choices[0];
     optionButton2.textContent = questionLists[n].choices[1];
     optionButton3.textContent = questionLists[n].choices[2];
@@ -111,14 +103,9 @@ function checkResponse(event) {
 }
 
 // finished Quiz function
-let submitPage = document.querySelector("#end-screen");
-let finalScore = document.querySelector("#final_score");
-let highScores = document.querySelector("#highscores");
-let scoreHistory = document.querySelector("#score_history");
-let scoreCheck = document.querySelector("#score_check");
 
 function finishedQuiz() {
-    questionDisplayEl.style.display = "none";
+    questionDisplay.style.display = "none";
     submitPage.style.display = "block";
     console.log(submitPage);
     // final score
@@ -138,7 +125,19 @@ function whatsMyScore() {
     return newList;
 };
 
- // Event listeners
+let startButton = document.querySelector("#start");
+let backButton = document.querySelector("#back_button")
+let finish = document.querySelector("#finish");
+let timeRemaining = document.getElementById("timer");
+let startScreen = document.querySelector("#start-screen")
+let questionDisplay = document.querySelector("#questions")
+let submitPage = document.querySelector("#end-screen");
+let finalScore = document.querySelector("#final_score");
+let highScores = document.querySelector("#highscores");
+let scoreHistory = document.querySelector("#score_history");
+let scoreCheck = document.querySelector("#score_check");
+
+// Event listeners
 // startButton to start the quiz
 startButton.addEventListener("click", startTheQuiz);
 
@@ -146,4 +145,12 @@ startButton.addEventListener("click", startTheQuiz);
 optionButtons.forEach(function (click) {
 
     click.addEventListener("click", check);
+});
+backButton.addEventListener("click",function(event){
+    event.preventDefault();
+    finalScore.style.display = "none";
+    startScreen.style.display = "block";
+    highScores.style.display = "none";
+    questionDisplay.style.display ="none";
+    location.reload();
 });
