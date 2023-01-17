@@ -1,11 +1,10 @@
 
 // WHEN I click the start button THEN a timer starts 
-
-let startButton = document.querySelector("#start_button");
+console.log("is this even working")
+let startButton = document.querySelector("#start");
 let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
-let questionTitlePage = document.querySelector("#question_title");
-let startScreen = document.querySelector("#start_screen")
+let startScreen = document.querySelector("#start-screen")
 let questionDisplayEl = document.querySelector("#questions")
 
 let seconds = 60;
@@ -18,16 +17,17 @@ let questCount = 1;
 
 function startTheQuiz() {
     startScreen.style.display = "none";
-    questionTitlePage.style.display = "block";
+    questionDisplayEl.style.display = "block";
     questionNmb = 0
-    countdown();
+    timer();
     displayQuestion(questionNmb);
+   
 }
-
 
 function timer() {
     let timerInterval = setInterval(function () {
         seconds--;
+ console.log(seconds)
         timeRemaining.textContent = "Time left: " + seconds + " s";
 
         //created an if statement, if time has ran out, to tell the user
@@ -42,6 +42,7 @@ function timer() {
             finishedQuiz();
         }
     }, 1000);
+   
 }
 // WHEN a timer starts and I am presented with a question
 // Created variables for option buttons, linked back to html file.
@@ -54,7 +55,7 @@ let optionButton3 = document.querySelector("#optionButton3");
 let optionButton4 = document.querySelector("#optionButton4");
 
 function displayQuestion(n) {
-    questionTitlePage.textContent = questionLists[n].question;
+    questionDisplayEl.textContent = questionLists[n].question;
     optionButton1.textContent = questionLists[n].choices[0];
     optionButton2.textContent = questionLists[n].choices[1];
     optionButton3.textContent = questionLists[n].choices[2];
@@ -64,7 +65,7 @@ function displayQuestion(n) {
 
 let questionLists = [
     {
-        question: "Q1 : What's the capital city of Indonesia",
+        question: "Q1 : What's the capital city of Indonesia?",
         choices: ["a. Bali", "b. Nusa Penida", "c. Jakarta", "d. Java"],
         answer: "c"
     },
@@ -110,14 +111,14 @@ function checkResponse(event) {
 }
 
 // finished Quiz function
-let submitPage = document.querySelector("#submit_page");
+let submitPage = document.querySelector("#end-screen");
 let finalScore = document.querySelector("#final_score");
 let highScores = document.querySelector("#highscores");
 let scoreHistory = document.querySelector("#score_history");
 let scoreCheck = document.querySelector("#score_check");
 
 function finishedQuiz() {
-    questionTitlePage.style.display = "none";
+    questionDisplayEl.style.display = "none";
     submitPage.style.display = "block";
     console.log(submitPage);
     // final score
@@ -137,7 +138,7 @@ function whatsMyScore() {
     return newList;
 };
 
-// Event listeners
+ // Event listeners
 // startButton to start the quiz
 startButton.addEventListener("click", startTheQuiz);
 
