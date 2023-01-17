@@ -142,6 +142,23 @@ function whatsMyScore() {
         }
     };
 
+ // Leader-board scores list in order
+ function order () {
+    let unordered = whatsMyScore();
+    if (getScore == null ){
+        return;
+    } else{
+        unordered.order(function(a,b){
+        return b.score - a.score;
+    })
+    return unordered;
+}};
+   // Adding scores and initials to the local storage
+   function addInfo (n) {
+    let newList = whatsMyScore();
+    newList.push(n);
+    localStorage.setItem("ScoreList", JSON.stringify(newList));
+};
 let startButton = document.querySelector("#start");
 let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
