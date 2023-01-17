@@ -178,7 +178,9 @@ let submitPage = document.querySelector("#end-screen");
 let finalScore = document.querySelector("#final_score");
 let highScores = document.querySelector("#highscores");
 let scoreHistory = document.querySelector("#score_history");
-let scoreCheck = document.querySelector("#score_check");
+let verifyScore = document.querySelector("#score_check");
+let playerInitial =document.querySelector("#initials");
+
 
 // Event listeners
 // startButton to start the quiz
@@ -198,3 +200,12 @@ backButton.addEventListener("click", function (event) {
     questionDisplay.style.display = "none";
     location.reload();
 });
+verifyScore.addEventListener("click", function(event) {
+    event.preventDefault();
+    scoreHistory.style.display = "none";
+    startScreen.style.display = "none";
+    highScores.style.display = "block";
+    questionDisplay.style.display ="none";
+    addScores();
+});
+
