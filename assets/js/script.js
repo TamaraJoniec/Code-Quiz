@@ -6,6 +6,7 @@ let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
 let questionTitlePage = document.querySelector("#question_title");
 let startScreen = document.querySelector("#start_screen")
+let questionDisplayEl = document.querySelector("#questions")
 
 let seconds = 60;
 let questionNmb = 0;
@@ -17,7 +18,7 @@ let questCount = 1;
 
 function startTheQuiz() {
     startScreen.style.display = "none";
-    questionTitle.style.display = "block";
+    questionTitlePage.style.display = "block";
     questionNmb = 0
     countdown();
     displayQuestion(questionNmb);
@@ -53,7 +54,7 @@ let optionButton3 = document.querySelector("#optionButton3");
 let optionButton4 = document.querySelector("#optionButton4");
 
 function displayQuestion(n) {
-    optionButtons.textContent = questionLists[n].question;
+    questionTitlePage.textContent = questionLists[n].question;
     optionButton1.textContent = questionLists[n].choices[0];
     optionButton2.textContent = questionLists[n].choices[1];
     optionButton3.textContent = questionLists[n].choices[2];
@@ -86,62 +87,62 @@ let questionLists = [
 // WHEN I answer a question, identify right from wrong answers
 
 let check = document.querySelector("#check")
-function checkResponse (event) {
+function checkResponse(event) {
     event.preventDefault();
     //display result
     check.style.display = "block";
     setTimeout(function () {
         check.style.display = 'none';
     }, 1000);
-     // check 
-     if (questionLists[questionNmb].answer == event.target.value) {
-        check.textContent = "Correct!"; 
+    // check 
+    if (questionLists[questionNmb].answer == event.target.value) {
+        check.textContent = "Correct!";
         score = score + 1;
     } else {
         seconds = seconds - 10;
         check.textContent = "Nope! The answer is:  " + questionLists[questionNmb].answer + " .";
     }   //THEN I am presented with another question
-    if (questionNmb < questionLists.length -1 ) {
-        displayQuestion(questionNmb +1);
+    if (questionNmb < questionLists.length - 1) {
+        displayQuestion(questionNmb + 1);
     } else {
         finishedQuiz();
-}
+    }
 }
 
 // finished Quiz function
 let submitPage = document.querySelector("#submit_page");
 let finalScore = document.querySelector("#final_score");
-let highScores =document.querySelector("#highscores");
-let scoreHistory =document.querySelector("#score_history");
-let scoreCheck =document.querySelector("#score_check");
+let highScores = document.querySelector("#highscores");
+let scoreHistory = document.querySelector("#score_history");
+let scoreCheck = document.querySelector("#score_check");
 
 function finishedQuiz() {
     questionTitlePage.style.display = "none";
     submitPage.style.display = "block";
     console.log(submitPage);
     // final score
-    finalScore.textContent = "You got :" + score ;
-    timeRemaining.style.display = "none"; 
+    finalScore.textContent = "You got :" + score;
+    timeRemaining.style.display = "none";
 }
 
-    // creating a function to display scores and initals
-    function whatsMyScore () {
-        let presentList =localStorage.getItem("ScoreList");
-        if (presentList !== null ){
-            newList = JSON.parse(presentList);
-            return newList;
-        } else {
-            newList = [];
-        }
+// creating a function to display scores and initals
+function whatsMyScore() {
+    let presentList = localStorage.getItem("ScoreList");
+    if (presentList !== null) {
+        newList = JSON.parse(presentList);
         return newList;
-    };
+    } else {
+        newList = [];
+    }
+    return newList;
+};
 
- // Event listeners
- // startButton to start the quiz
- startButton.addEventListener("click", startTheQuiz);
-    
-  //options buttons, next question button
-  optionButtons.forEach(function(click){
-    
+// Event listeners
+// startButton to start the quiz
+startButton.addEventListener("click", startTheQuiz);
+
+//options buttons, next question button
+optionButtons.forEach(function (click) {
+
     click.addEventListener("click", check);
 });
