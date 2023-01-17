@@ -125,11 +125,28 @@ function whatsMyScore() {
     return newList;
 };
 
+    // Add scores to leader board
+    function addScores () {
+        scoreHistory.innerHTML = "";
+        scoreHistory.style.display ="block";
+        let highScores = sort();   
+        // Show the top three high scores. 
+        let topThree = highScores.slice(0,3);
+        for (let i = 0; i < topThree.length; i++) {
+            let item = topThree[i];
+        // Display the final scores on scores history
+        let ol = document.createElement("ol");
+        ol.textContent = item.user + " - " + item.score;
+        ol.setAttribute("data-index", i);
+        scoreHistory.appendChild(ol);
+        }
+    };
+
 let startButton = document.querySelector("#start");
-let backButton = document.querySelector("#back_button")
+let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
 let timeRemaining = document.getElementById("timer");
-let startScreen = document.querySelector("#start-screen")
+let startScreen = document.querySelector("#start-screen");;
 let questionDisplay = document.querySelector("#questions")
 let submitPage = document.querySelector("#end-screen");
 let finalScore = document.querySelector("#final_score");
@@ -146,6 +163,7 @@ optionButtons.forEach(function (click) {
 
     click.addEventListener("click", check);
 });
+
 backButton.addEventListener("click",function(event){
     event.preventDefault();
     finalScore.style.display = "none";
