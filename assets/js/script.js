@@ -41,10 +41,10 @@ function timer() {
 
 // Display Q&A
 let optionButtons = document.querySelector(".choices");
-let optionButton1 = document.querySelector("#optionButton1");
-let optionButton2 = document.querySelector("#optionButton2");
-let optionButton3 = document.querySelector("#optionButton3");
-let optionButton4 = document.querySelector("#optionButton4");
+let optionButton1 = document.getElementById("optionButton1");
+let optionButton2 = document.getElementById("optionButton2");
+let optionButton3 = document.getElementById("optionButton3");
+let optionButton4 = document.getElementById("optionButton4");
 
 function displayQuestion(n) {
     questionDisplay.textContent = questionLists[n].question;
@@ -54,8 +54,15 @@ function displayQuestion(n) {
     optionButton4.textContent = questionLists[n].choices[3];
     questionNmb = n;
 }
+function pickA() { checkAnswer(0); }
 
-let questionLists = [
+function pickB() { checkAnswer(1); }
+
+function pickC() { checkAnswer(2); }
+
+function pickD() { checkAnswer(3); }
+
+const questionLists = [
     {
         question: "Q1 : What's the capital city of Indonesia?",
         choices: ["a. Bali", "b. Nusa Penida", "c. Jakarta", "d. Java"],
@@ -172,7 +179,7 @@ let startButton = document.querySelector("#start");
 let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
 let submitButton =document.querySelector("#submit");
-let clearButton=document.querySelector("#clear_button");
+let clearButton=document.querySelector("#clear");
 let timeRemaining = document.getElementById("timer");
 let startScreen = document.querySelector("#start-screen");;
 let questionDisplay = document.querySelector("#questions")
@@ -189,10 +196,11 @@ let playerInitial =document.querySelector("#initials");
 startButton.addEventListener("click", startTheQuiz);
 
 //options buttons, next question button
-optionButtons.forEach(function (click) {
 
-    click.addEventListener("click", check);
-});
+optionButton1.addEventListener("click", pickA);
+optionButton2.addEventListener("click", pickB);
+optionButton3.addEventListener("click", pickC);
+optionButton4.addEventListener("click", pickD);
 
 backButton.addEventListener("click", function (event) {
     event.preventDefault();
