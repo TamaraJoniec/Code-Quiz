@@ -3,7 +3,7 @@
 
 let seconds = 60;
 let questionNmb = 0;
-let score = 0;
+let result = 0;
 let questCount = 1;
 
 // Click the button to start
@@ -19,7 +19,7 @@ function startTheQuiz() {
 function timer() {
     let timerInterval = setInterval(function () {
         seconds--;
- console.log(seconds)
+        console.log(seconds)
         timeRemaining.textContent = "Time left: " + seconds + " s";
 
         //created an if statement, if time has ran out, to tell the user
@@ -34,7 +34,7 @@ function timer() {
             finishedQuiz();
         }
     }, 1000);
-   
+
 }
 // WHEN a timer starts and I am presented with a question
 // Created variables for option buttons, linked back to html file.
@@ -90,7 +90,7 @@ function checkResponse(event) {
     // check 
     if (questionLists[questionNmb].answer == event.target.value) {
         check.textContent = "Correct!";
-        score = score + 1;
+        result = result + 1;
     } else {
         seconds = seconds - 10;
         check.textContent = "Nope! The answer is:  " + questionLists[questionNmb].answer + " .";
@@ -109,7 +109,7 @@ function finishedQuiz() {
     submitPage.style.display = "block";
     console.log(submitPage);
     // final score
-    finalScore.textContent = "You got :" + score;
+    finalScore.textContent = "You got :" + result;
     timeRemaining.style.display = "none";
 }
 
@@ -125,36 +125,45 @@ function whatsMyScore() {
     return newList;
 };
 
-    // Add scores to leader board
-    function addScores () {
-        scoreHistory.innerHTML = "";
-        scoreHistory.style.display ="block";
-        let highScores = sort();   
-        // Show the top three high scores. 
-        let topThree = highScores.slice(0,3);
-        for (let i = 0; i < topThree.length; i++) {
-            let item = topThree[i];
+// Add scores to leader board
+function addScores() {
+    scoreHistory.innerHTML = "";
+    scoreHistory.style.display = "block";
+    let highScores = sort();
+    // Show the top three high scores. 
+    let topThree = highScores.slice(0, 3);
+    for (let i = 0; i < topThree.length; i++) {
+        let item = topThree[i];
         // Display the final scores on scores history
         let ol = document.createElement("ol");
         ol.textContent = item.user + " - " + item.score;
         ol.setAttribute("data-index", i);
         scoreHistory.appendChild(ol);
-        }
-    };
+    }
+};
 
- // Leader-board scores list in order
- function order () {
+// Leader-board scores list in order
+function order() {
     let unordered = whatsMyScore();
-    if (getScore == null ){
+    if (getScore == null) {
         return;
-    } else{
-        unordered.order(function(a,b){
-        return b.score - a.score;
-    })
-    return unordered;
-}};
-   // Adding scores and initials to the local storage
-   function addInfo (n) {
+    } else {
+        unordered.order(function (a, b) {
+            return b.result - a.result;
+        })
+        return unordered;
+    }
+};
+function register () {
+    let details ={
+        player: playerInitial.value,
+        score: result
+    }
+    addInfo(details);
+    addScores();
+}
+// Adding scores and initials function to the local storage
+function addInfo(n) {
     let newList = whatsMyScore();
     newList.push(n);
     localStorage.setItem("ScoreList", JSON.stringify(newList));
@@ -181,11 +190,11 @@ optionButtons.forEach(function (click) {
     click.addEventListener("click", check);
 });
 
-backButton.addEventListener("click",function(event){
+backButton.addEventListener("click", function (event) {
     event.preventDefault();
     finalScore.style.display = "none";
     startScreen.style.display = "block";
     highScores.style.display = "none";
-    questionDisplay.style.display ="none";
+    questionDisplay.style.display = "none";
     location.reload();
 });
