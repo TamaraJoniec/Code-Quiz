@@ -171,7 +171,8 @@ function addInfo(n) {
 let startButton = document.querySelector("#start");
 let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
-var submitButton =document.querySelector("#submit");
+let submitButton =document.querySelector("#submit");
+let clearButton=document.querySelector("#clear_button");
 let timeRemaining = document.getElementById("timer");
 let startScreen = document.querySelector("#start-screen");;
 let questionDisplay = document.querySelector("#questions")
@@ -218,4 +219,8 @@ submitButton.addEventListener("click", function(event) {
     questionDisplay.style.display ="none";
     register();
 });
-
+clearButton.addEventListener("click",function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    addScores();
+});
