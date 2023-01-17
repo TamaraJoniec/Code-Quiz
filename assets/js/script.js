@@ -171,6 +171,7 @@ function addInfo(n) {
 let startButton = document.querySelector("#start");
 let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
+var submitButton =document.querySelector("#submit");
 let timeRemaining = document.getElementById("timer");
 let startScreen = document.querySelector("#start-screen");;
 let questionDisplay = document.querySelector("#questions")
@@ -207,5 +208,14 @@ verifyScore.addEventListener("click", function(event) {
     highScores.style.display = "block";
     questionDisplay.style.display ="none";
     addScores();
+});
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    scoreHistory.style.display = "none";
+    startScreen.style.display = "none";
+    highScores.style.display = "block";
+    questionDisplay.style.display ="none";
+    register();
 });
 
