@@ -35,7 +35,7 @@ Create a code quiz that contains the following requirements:
 
 The following animation demonstrates the application functionality:
 
-![  Screenshot of code quiz.](./assets/images/Screenshot%2 0.png)
+![  Screenshot of code quiz.](./assets/images/Screenshot.png)
 
 * The URL of the functional, deployed application: https://tamarajoniec.github.io/Code-Quiz/
 
