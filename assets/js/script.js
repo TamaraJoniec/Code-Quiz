@@ -11,6 +11,7 @@ let questCount = 1;
 function startTheQuiz() {
     startScreen.style.display = "none";
     questionDisplay.style.display = "block";
+    //
     questionNmb = 0
     timer();
     displayQuestion(questionNmb);
@@ -41,26 +42,40 @@ function timer() {
 
 // Display Q&A
 let optionButtons = document.querySelector(".choices");
-let optionButton1 = document.getElementById("optionButton1");
-let optionButton2 = document.getElementById("optionButton2");
-let optionButton3 = document.getElementById("optionButton3");
-let optionButton4 = document.getElementById("optionButton4");
+let optionButton1 = document.getElementById("option_button1");
+let optionButton2 = document.getElementById("option_button2");
+let optionButton3 = document.getElementById("option_button3");
+let optionButton4 = document.getElementById("option_button4");
 
 function displayQuestion(n) {
-    questionDisplay.textContent = questionLists[n].question;
+    document.getElementById("question-title").textContent = questionLists[n].question;
     optionButton1.textContent = questionLists[n].choices[0];
     optionButton2.textContent = questionLists[n].choices[1];
     optionButton3.textContent = questionLists[n].choices[2];
     optionButton4.textContent = questionLists[n].choices[3];
     questionNmb = n;
 }
-function pickA() { checkAnswer(0); }
+// function checkAnswer(userSelected) {
+//     // compare what user selected with correct ans
+//     // 1. what user selected
 
-function pickB() { checkAnswer(1); }
+//     // 2. correct answer
+//     var correctAns = questionLists[questionNmb].answer
+//     // 3. if condition
+//     if (correctAns == userSelected) {
+//         // its correct
+//     }
+//     else {
+//         // its incorrect
+//     }
+// }
+function pickA() { checkResponse('a'); }
 
-function pickC() { checkAnswer(2); }
+function pickB() { checkResponse('b'); }
 
-function pickD() { checkAnswer(3); }
+function pickC() { checkResponse('c'); }
+
+function pickD() { checkResponse('d'); }
 
 const questionLists = [
     {
@@ -87,15 +102,15 @@ const questionLists = [
 // WHEN I answer a question, identify right from wrong answers
 
 let check = document.querySelector("#check")
-function checkResponse(event) {
-    event.preventDefault();
+function checkResponse(value) {
+    // event.preventDefault();
     //display result
     check.style.display = "block";
     setTimeout(function () {
         check.style.display = 'none';
     }, 1000);
     // check 
-    if (questionLists[questionNmb].answer == event.target.value) {
+    if (questionLists[questionNmb].answer == value) {
         check.textContent = "Correct!";
         result = result + 1;
     } else {
@@ -136,14 +151,14 @@ function whatsMyScore() {
 function addScores() {
     scoreHistory.innerHTML = "";
     scoreHistory.style.display = "block";
-    let highScores = sort();
+    let highScores = order();
     // Show the top three high scores. 
     let topThree = highScores.slice(0, 3);
     for (let i = 0; i < topThree.length; i++) {
         let item = topThree[i];
         // Display the final scores on scores history
         let ol = document.createElement("ol");
-        ol.textContent = item.user + " - " + item.score;
+        ol.textContent = item.player + " - " + item.score;
         ol.setAttribute("data-index", i);
         scoreHistory.appendChild(ol);
     }
@@ -152,11 +167,11 @@ function addScores() {
 // Leader-board scores list in order
 function order() {
     let unordered = whatsMyScore();
-    if (getScore == null) {
+    if (unordered == null) {
         return;
     } else {
-        unordered.order(function (a, b) {
-            return b.result - a.result;
+        unordered.sort(function (a, b) {
+            return b.score - a.score;
         })
         return unordered;
     }
@@ -179,7 +194,7 @@ let startButton = document.querySelector("#start");
 let backButton = document.querySelector("#back_button");
 let finish = document.querySelector("#finish");
 let submitButton =document.querySelector("#submit");
-let clearButton=document.querySelector("#clear");
+let clearButton=document.querySelector("#clear_button");
 let timeRemaining = document.getElementById("timer");
 let startScreen = document.querySelector("#start-screen");;
 let questionDisplay = document.querySelector("#questions")
@@ -212,7 +227,7 @@ backButton.addEventListener("click", function (event) {
 });
 verifyScore.addEventListener("click", function(event) {
     event.preventDefault();
-    scoreHistory.style.display = "none";
+    // scoreHistory.style.display = "none";
     startScreen.style.display = "none";
     highScores.style.display = "block";
     questionDisplay.style.display ="none";
@@ -221,7 +236,7 @@ verifyScore.addEventListener("click", function(event) {
 
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    scoreHistory.style.display = "none";
+    // scoreHistory.style.display = "none";
     startScreen.style.display = "none";
     highScores.style.display = "block";
     questionDisplay.style.display ="none";

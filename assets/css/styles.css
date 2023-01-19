@@ -14,6 +14,12 @@ a {
   transition: color 0.1s;
 }
 
+.back-clear {
+  display: flex;
+  justify-content: center;
+  
+}
+
 a:hover {
   color: #8570a5;
 }
@@ -54,9 +60,9 @@ li {
   list-style: decimal inside none;
 }
 
-li:nth-child(odd) {
+/* li:nth-child(odd) {
   background-color: #f3edfc;
-}
+} */
 
 .wrapper {
   margin: 100px auto 0 auto;
