@@ -2,7 +2,7 @@ body {
   font-family: Arial;
   font-size: 120%;
   color: white;
-  background-image: url("/assets/images/background.jpeg"); 
+  background-image: url("./assets/images/background.jpeg"); 
 }
 backgroud-image {
   background-repeat: no-repeat;
