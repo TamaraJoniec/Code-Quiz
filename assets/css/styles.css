@@ -1,8 +1,7 @@
 body {
   font-family: Arial;
   font-size: 120%;
-  color: white;
-  background-image: url("/assets/images/background.jpeg"); 
+  color: rgb(27, 26, 26);
 }
 backgroud-image {
   background-repeat: no-repeat;
